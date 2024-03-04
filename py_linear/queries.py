@@ -42,7 +42,7 @@ def user_issues_gql() -> str:
         .query(
             "assignedIssues",
             input={
-                "filter": '{ and: [ { state: { name: { neq: "Done" } } }, { state: { name: { neq: "Canceled" } } } ]}'
+                "filter": '{ or: [ { state: { name: { eq: "Todo" } } }, { state: { name: { eq: "In Progress" } } }, { state: { name: { eq: "Blocked" } } } ] }'
             },
         )
         .generate()
